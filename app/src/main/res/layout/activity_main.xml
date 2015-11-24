@@ -1,0 +1,160 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+                android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity"
+    >
+
+    <android.support.v7.widget.Toolbar
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/ToolbarTheme"
+        app:popupTheme="@style/ToolbarTheme"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Freeze UI"
+        android:id="@+id/buttonFreezeUI"
+        android:layout_marginTop="53dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:onClick="onFreezeUI" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editFreezeSeconds"
+        android:layout_alignBottom="@+id/buttonFreezeUI"
+        android:layout_toRightOf="@+id/buttonFreezeUI"
+        android:layout_toStartOf="@+id/textView2"
+        android:layout_toLeftOf="@+id/textView2"
+        android:inputType="number"
+        android:text="1" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="process"
+        android:id="@+id/textFreezeStatus"
+        android:layout_alignBottom="@+id/buttonFreezeUI"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="sec/Status: "
+        android:id="@+id/textView2"
+        android:layout_alignBottom="@+id/textFreezeStatus"
+        android:layout_toLeftOf="@+id/textFreezeStatus"
+        android:layout_toStartOf="@+id/textFreezeStatus" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/serial1"
+        android:id="@+id/serial1"
+        android:layout_below="@+id/buttonFreezeUI"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/buttonFreezeUI"
+        android:layout_alignEnd="@+id/buttonFreezeUI"
+        android:onClick="onSerial1" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTimesSerial1"
+        android:inputType="number"
+        android:layout_alignBottom="@+id/serial1"
+        android:layout_toRightOf="@+id/serial1"
+        android:layout_toLeftOf="@+id/textView"
+        android:layout_toStartOf="@+id/textView"
+        android:text="10" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="times/done:"
+        android:id="@+id/textView"
+        android:layout_alignBottom="@+id/editTimesSerial1"
+        android:layout_toStartOf="@+id/textDoneSerial1"
+        android:layout_toLeftOf="@+id/textDoneSerial1" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="0"
+        android:id="@+id/textDoneSerial1"
+        android:layout_alignTop="@+id/textView"
+        android:layout_alignRight="@+id/textFreezeStatus"
+        android:layout_alignEnd="@+id/textFreezeStatus"
+        android:layout_toRightOf="@+id/textView2"
+        android:layout_toEndOf="@+id/textView2" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/serial2"
+        android:id="@+id/serial2"
+        android:onClick="onSerial2"
+        android:layout_below="@+id/serial1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_toLeftOf="@+id/editTimesSerial2"
+        android:layout_toStartOf="@+id/editTimesSerial2" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="times/done:"
+        android:id="@+id/textSerial2Times"
+        android:layout_alignTop="@+id/textDoneSerial2"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_alignStart="@+id/textView2" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="0"
+        android:id="@+id/textDoneSerial2"
+        android:layout_alignBottom="@+id/serial2"
+        android:layout_toRightOf="@+id/textView"
+        android:layout_toEndOf="@+id/textView" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTimesSerial2"
+        android:inputType="number"
+        android:layout_alignBottom="@+id/serial2"
+        android:layout_toRightOf="@+id/serial1"
+        android:layout_alignRight="@+id/editTimesSerial1"
+        android:layout_alignEnd="@+id/editTimesSerial1"
+        android:text="10" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Net on Main"
+        android:id="@+id/buttonNetOnMain"
+        android:layout_below="@+id/serial2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:onClick="onNetOnMain" />
+
+</RelativeLayout>

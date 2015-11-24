@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ThinkAsync</string>
+    <string name="serial1">Serial1</string>
+    <string name="serial2">Serail2</string>
+</resources>
