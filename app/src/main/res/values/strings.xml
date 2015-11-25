@@ -2,4 +2,10 @@
     <string name="app_name">ThinkAsync</string>
     <string name="serial1">Serial1</string>
     <string name="serial2">Serail2</string>
+    <string name="title_activity_serialization">SerializationActivity</string>
+    <string name="json_button_name">Json</string>
+    <string name="flat_buffer_name">Flat Buffer</string>
+    <string name="xml_button_name">XML</string>
+    <string name="serialization_button_name">Serialization</string>
+    <string name="button_network_name">Network</string>
 </resources>
