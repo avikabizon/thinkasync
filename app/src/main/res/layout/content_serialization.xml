@@ -35,13 +35,5 @@
             android:layout_centerHorizontal="true"
             android:onClick="onFlatBufferClicked" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/xml_button_name"
-            android:id="@+id/xml_button"
-            android:layout_below="@+id/flat_buffer_button"
-            android:layout_centerHorizontal="true"
-            android:onClick="onXMLClicked" />
     </RelativeLayout>
 </RelativeLayout>
