@@ -31,23 +31,7 @@ public class NetworkActivity extends AppCompatActivity {
 
 
 
-    public void onFreezeUI(View view){
-        EditText editSeconds = (EditText)findViewById(R.id.editFreezeSeconds);
-        final int seconds = Integer.parseInt(editSeconds.getText().toString());
-        final TextView status = (TextView)findViewById(R.id.textFreezeStatus);
-        status.setText("Starting");
-        try {
-            AsyncNetTester ant = new AsyncNetTester(seconds);
-            //ant.execute();
-            ant.execute().get();
-            status.setText("Done");
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
 
-    }
 
 
 
