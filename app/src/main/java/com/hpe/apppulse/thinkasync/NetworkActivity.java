@@ -1,6 +1,7 @@
 package com.hpe.apppulse.thinkasync;
 
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -38,7 +39,13 @@ public class NetworkActivity extends AppCompatActivity {
         SerialNetworkAsyncTask asyncTask = new SerialNetworkAsyncTask(this);
         asyncTask.setIterations(4);
         SerialNetworkAsyncTask.reset();
-        asyncTask.execute();
+        if (Build.VERSION.SDK_INT >= 11) {
+            //--post GB use serial executor by default --
+            asyncTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+        } else {
+            //--GB uses ThreadPoolExecutor by default--
+            asyncTask.execute();
+        }
     }
 
 
@@ -61,9 +68,17 @@ public class NetworkActivity extends AppCompatActivity {
 
         SerialNetworkAsyncTask.reset();
         for(int i = 0; i < 4; i++) {
+
             SerialNetworkAsyncTask asyncTask = new SerialNetworkAsyncTask(this);
             asyncTask.setIterations(1);
-            asyncTask.execute();
+
+            if (Build.VERSION.SDK_INT >= 11) {
+                //--post GB use serial executor by default --
+                asyncTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+            } else {
+                //--GB uses ThreadPoolExecutor by default--
+                asyncTask.execute();
+            }
         }
     }
 

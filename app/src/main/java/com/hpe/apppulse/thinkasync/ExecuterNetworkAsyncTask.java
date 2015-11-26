@@ -28,11 +28,13 @@ public class ExecuterNetworkAsyncTask extends AsyncTask<Void, Void, Boolean> {
             try {
                 conn = (HttpURLConnection) (new URL(HTTPBIN_URL).openConnection());
                 conn.getResponseCode();
-                return true;
-
             } catch (IOException e) {
                 e.printStackTrace();
                 return false;
+            } finally {
+                if (conn != null) {
+                    conn.disconnect();
+                }
             }
         }
         return true;

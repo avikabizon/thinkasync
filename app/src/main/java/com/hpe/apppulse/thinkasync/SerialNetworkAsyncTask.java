@@ -2,6 +2,7 @@ package com.hpe.apppulse.thinkasync;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -42,7 +43,13 @@ public class SerialNetworkAsyncTask extends AsyncTask<Void, Void, Boolean> {
 
         if (mCurrentIter++ < mIterations) {
             SerialNetworkAsyncTask newAsync = new SerialNetworkAsyncTask(mContext);
-            newAsync.execute();
+            if (Build.VERSION.SDK_INT >= 11) {
+                //--post GB use serial executor by default --
+                newAsync.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+            } else {
+                //--GB uses ThreadPoolExecutor by default--
+                newAsync.execute();
+            }
         }
         else {
             //AlertDialogUtil.showAlertDialog(mContext, "Operation ended");
