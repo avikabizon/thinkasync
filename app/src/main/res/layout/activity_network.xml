@@ -54,7 +54,7 @@
                 android:background="@color/btnColor"
                 android:text="Executor thread"
                 android:id="@+id/exceutor"
-                android:onClick="onSerial1"/>
+                android:onClick="onExecutorThread"/>
 
             <Button
                 android:layout_width="match_parent"
@@ -63,7 +63,7 @@
                 android:background="@color/btnColor"
                 android:text="Parallel"
                 android:id="@+id/parallel"
-                android:onClick="onSerial1"/>
+                android:onClick="onParallelThread"/>
 
 
 

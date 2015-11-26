@@ -29,39 +29,40 @@ public class NetworkActivity extends AppCompatActivity {
         toolbar.setLogo(R.mipmap.ic_launcher);
     }
 
-
-
-
-
-
-
     public void onSerial1(View view){
         if (!NetworkUtils.isNetworkAvailable(this)) {
             Toast.makeText(this,"You seem to be disconnected from network",Toast.LENGTH_SHORT).show();
             return;
         }
 
-
         SerialNetworkAsyncTask asyncTask = new SerialNetworkAsyncTask(this);
-        asyncTask.setIterations(5);
-        asyncTask.reset();
+        asyncTask.setIterations(4);
+        SerialNetworkAsyncTask.reset();
         asyncTask.execute();
-
-
-
     }
 
-    public void onSerial2(View view){
+
+    public void onExecutorThread(View view) {
         if (!NetworkUtils.isNetworkAvailable(this)) {
             Toast.makeText(this,"You seem to be disconnected from network",Toast.LENGTH_SHORT).show();
             return;
         }
 
-        for (int i=0;i<5;i++) {
+        ExecuterNetworkAsyncTask asyncTask = new ExecuterNetworkAsyncTask(this);
+        asyncTask.setIterations(5);
+        asyncTask.execute();
+    }
+
+    public void onParallelThread(View view) {
+        if (!NetworkUtils.isNetworkAvailable(this)) {
+            Toast.makeText(this,"You seem to be disconnected from network",Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        SerialNetworkAsyncTask.reset();
+        for(int i = 0; i < 4; i++) {
             SerialNetworkAsyncTask asyncTask = new SerialNetworkAsyncTask(this);
-            asyncTask.mCurrentIter = Integer.MAX_VALUE;
             asyncTask.setIterations(1);
-//            asyncTask.reset();
             asyncTask.execute();
         }
     }

@@ -15,12 +15,8 @@ import java.net.URL;
 public class SerialNetworkAsyncTask extends AsyncTask<Void, Void, Boolean> {
     public static final String HTTPBIN_URL = "http://httpbin.org/delay/2";
     private static int mIterations = 5;
-    public static int mCurrentIter = 1;
+    private static int mCurrentIter = 0;
     private Context mContext;
-
-    private SerialNetworkAsyncTask() {
-
-    }
 
     public SerialNetworkAsyncTask(Context context) {
         mContext = context;
@@ -44,22 +40,22 @@ public class SerialNetworkAsyncTask extends AsyncTask<Void, Void, Boolean> {
     @Override
     protected void onPostExecute(Boolean aBoolean) {
 
-        Toast.makeText(mContext,String.format("Async network #%d finished",mCurrentIter),Toast.LENGTH_SHORT).show();
         if (mCurrentIter++ < mIterations) {
             SerialNetworkAsyncTask newAsync = new SerialNetworkAsyncTask(mContext);
             newAsync.execute();
         }
-        else  {
-
+        else {
+            //AlertDialogUtil.showAlertDialog(mContext, "Operation ended");
         }
+
+        Toast.makeText(mContext,String.format("Async network #%d finished",mCurrentIter),Toast.LENGTH_SHORT).show();
     }
 
-    public static void reset() {
-        mCurrentIter = 1;
-    }
-
-    public static void setIterations(int iterations) {
+    public void setIterations(int iterations) {
         mIterations = iterations;
     }
 
+    public static void reset() {
+        mCurrentIter = 0;
+    }
 }
