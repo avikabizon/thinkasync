@@ -1,8 +1,10 @@
 package com.hpe.apppulse.thinkasync;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -37,6 +39,45 @@ public class SerializationActivity extends AppCompatActivity {
     public void onFlatBufferClicked(View view) {
         FlatBuffersAsyncTask asyncTask = new FlatBuffersAsyncTask(this);
         asyncTask.execute();
+    }
+
+    public static void showAlertDialog(final Context context, String message) {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                context);
+
+        // set title
+        alertDialogBuilder.setTitle("Operation Completed");
+
+        // set dialog message
+        alertDialogBuilder
+                .setMessage(message)
+                .setCancelable(false)
+                .setPositiveButton("Yes",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,
+                                                int id) {
+                                // if this button is clicked, close
+                                // current activity
+/*
+                                context.finish();
+*/
+                            }
+                        })
+                .setNegativeButton("No",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,
+                                                int id) {
+                                // if this button is clicked, just close
+                                // the dialog box and do nothing
+                                dialog.cancel();
+                            }
+                        });
+
+        // create alert dialog
+        AlertDialog alertDialog = alertDialogBuilder.create();
+
+        // show it
+        alertDialog.show();
     }
 
     public class JsonReaderAsyncTask extends AsyncTask<Void, Void, Void> {
@@ -77,7 +118,8 @@ public class SerializationActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(Void result) {
-            Toast.makeText(mContext,String.format("Read %s elements from Json. Load time: %s", reposListJson.repos.size(), readTimeinMillis),Toast.LENGTH_SHORT).show();
+            //Toast.makeText(mContext,String.format("Read %s elements from Json. Load time: %s", reposListJson.repos.size(), readTimeinMillis),Toast.LENGTH_SHORT).show();            showAlertDialog(mContext, String.format("Read %s elements from Flat Buffers data. Load time: %s",reposListFlat.reposLength(), readTimeinMillis));
+            showAlertDialog(mContext, String.format("Read %s elements from Json. Load time: %s", reposListJson.repos.size(), readTimeinMillis));
         }
     }
 
@@ -117,7 +159,8 @@ public class SerializationActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(Void result) {
-            Toast.makeText(mContext,String.format("Read %s elements from Flat Buffers data. Load time: %s",reposListFlat.reposLength(), readTimeinMillis),Toast.LENGTH_SHORT).show();
+            //Toast.makeText(mContext,String.format("Read %s elements from Flat Buffers data. Load time: %s",reposListFlat.reposLength(), readTimeinMillis),Toast.LENGTH_SHORT).show();
+            showAlertDialog(mContext, String.format("Read %s elements from Flat Buffers data. Load time: %s",reposListFlat.reposLength(), readTimeinMillis));
         }
     }
 }
