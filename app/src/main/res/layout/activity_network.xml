@@ -52,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:background="@color/btnColor"
-                android:text="Executor thread"
+                android:text="Single thread"
                 android:id="@+id/exceutor"
                 android:onClick="onExecutorThread"/>
 

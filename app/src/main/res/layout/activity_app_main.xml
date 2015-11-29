@@ -11,10 +11,7 @@
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                   android:layout_width="fill_parent" android:layout_height="fill_parent"
                   android:id="@+id/layoutContainer" android:orientation="horizontal"
-
                   android:baselineAligned="false">
-
-
         <RelativeLayout
             android:layout_width="0dip"
             android:layout_height="fill_parent"
@@ -45,7 +42,6 @@
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
-
                 android:background="@color/btnColor"
                 android:onClick="onNetworkClicked" />
 
