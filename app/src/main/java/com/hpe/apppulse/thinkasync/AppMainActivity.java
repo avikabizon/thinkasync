@@ -28,5 +28,10 @@ public class AppMainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void onUIClicked(View view) {
+        Intent intent = new Intent(this, UiActivity.class);
+        startActivity(intent);
+    }
+
 
 }
