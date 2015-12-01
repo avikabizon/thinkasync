@@ -55,7 +55,7 @@
                     android:layout_marginTop="10dp"
 
                     android:background="@color/btnColor"
-                    android:onClick="onNetworkClicked" />
+                    android:onClick="onUIClicked" />
 
                 <Button
                 android:layout_width="match_parent"
